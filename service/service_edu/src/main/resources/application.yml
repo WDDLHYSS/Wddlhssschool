@@ -1,0 +1,47 @@
+# 服务端口
+server:
+  port: 8001
+
+# 服务名
+spring:
+  application:
+    name: service-edu
+  # 环境设置：dev、test、prod
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/schoolcloud?serverTimezone=GMT%2B8
+    password: 11235813
+    username: root
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+#nacos配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  #配置nacos地址
+  redis:
+    port: 6379
+    database: 0
+    timeout: 1800000
+    lettuce:
+      pool:
+        max-idle: 5
+        min-idle: 0
+        max-active: 20
+        max-wait: 1
+    host: localhost
+#mybatis-plus:
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#日志处理级别 error info  debug  warn all
+#logging:
+#  level:
+mybatis-plus:
+  mapper-locations: classpath:com/wddlhyss/eduservice/mapper/xml/*.xml
+feign:
+  hystrix:
+    enabled: true
+#    root: infoc
